@@ -24,6 +24,13 @@ for url in soup.find_all('url'):
     for tag in url:
         attributes[tag.name] = tag.text
         
+    #extracting the coin name from the url
+    loc = url.find('loc')
+    loc_url = loc.text
+    coin_name = loc_url.split('/')[-1]
+    #print(coin_name)
+    attributes['name'] = coin_name
+
     data['urlset'].append(attributes)
 #print(data['urlset'][0:5])
 
